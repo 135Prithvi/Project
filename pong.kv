@@ -1,0 +1,76 @@
+
+<PongBall>:
+    size: 50, 45 
+    canvas:
+        Color: 
+            rgba: self.color
+        Ellipse:
+            pos: self.pos
+            size: self.size
+             
+
+<Paddle>:    
+    size: 25, 200
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        
+            
+
+<PongGame>:
+    ball: pong_ball
+    player1: player_left
+    player2: player_right
+        
+    canvas:
+        Rectangle:
+            pos: self.center_x - 5, 0
+            size: 8, self.height
+        
+    Label:
+        id: score_1
+        font_size: 70  
+        center_x: root.width / 4
+        top: root.top - 50
+        text: str(root.player1.score)
+            
+    Label:
+        id: score_2
+        font_size: 70  
+        center_x: root.width * 3 / 4
+        top: root.top - 50
+        text: str(root.player2.score)
+        
+    PongBall:
+        id: pong_ball
+        center: self.parent.center
+            
+            
+    Paddle:
+        id: player_left
+        x: root.x
+        center_y: root.center_y
+            
+            
+    Paddle:
+        id: player_right
+        x: root.width - self.width
+        center_y: root.center_y
+        
+            
+
+    Image:
+        source:"images/lab_logo.png"
+        center_x: root.width * 2 / 4
+        top: root.top - 50
+
+    Label:
+        id: comment
+        text: ""
+        font_size: 70  
+        center_x: root.width * .5
+        top: root.top - 100
+    
+
+
